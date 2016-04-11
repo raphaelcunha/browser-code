@@ -1,0 +1,38 @@
+:host{
+  display: block;
+    margin-top: 25px;
+}
+.card{
+    height: 180px;
+    margin-bottom: 25px;
+}
+
+.card:hover {
+    cursor:pointer;
+    background-color: hsla(208, 98%, 43%, 0.05);
+}
+
+.card-img-top {
+    width:25%;
+    float:left;
+    vertical-align: middle;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.card-title {
+    display: table-cell;
+    vertical-align: middle;
+    float:left;
+
+    height:70px;
+    width:75%;
+    padding: 10px 15px 15px 15px;
+}
+
+.card-text {
+    float:left;
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 0 15px;
+}

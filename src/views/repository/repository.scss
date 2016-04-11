@@ -1,0 +1,87 @@
+:host{
+  display: block;
+    margin-top: 25px;
+}
+.card{
+    height: 180px;
+    margin-bottom: 25px;
+    text-overflow: ellipsis;
+}
+
+.card a {
+    color:#373a3c;
+}
+
+.card:hover {
+    cursor:pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.card-img-top {
+    width:25%;
+    float:left;
+    vertical-align: middle;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.card-title {
+    float: left;
+    width: 75%;
+    color:#373a3c;
+    padding: 10px 15px 0px 15px;
+}
+
+.card-text {
+    float:left;
+    font-size: 12px;
+    padding: 0 15px;
+    text-overflow: ellipsis;
+    height: 75px;
+    overflow:hidden;
+    margin-top: 5px;
+    color: #56595b;
+    text-overflow:ellipsis;
+}
+
+.card-text i {
+    position: absolute;
+    bottom: 28px;
+    right: 3px;
+    color: #dadada;
+
+    &:hover{
+        color: black;
+    }
+}
+
+
+
+.card-repository{
+    position:absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    background: #F1F0F0;
+    font-size: 11px;
+}
+
+.card-repository ul {
+    margin:0;
+    padding:0;
+    text-align: center;
+    border-top: 1px solid #5F01FF;
+
+}
+
+.card-repository ul li {
+    list-style: none;
+    padding:2px;
+    margin-left: 10px;
+    float:left;
+}
+
+.card-repository ul li i {
+    font-size: 12px;
+    padding-right: 2px;
+}

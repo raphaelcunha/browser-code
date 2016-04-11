@@ -1,0 +1,18 @@
+
+<div class="col-md-12">
+    <div class="col-md-3" *ngFor="#item of videos">
+        <div class="card" (click)="selectVideo(item.snippet.channelId)">
+            <img class="card-img-top  text-md-center" src="{{item.snippet.thumbnails.default.url}} " width="30%"
+                 alt="{{item.snippet.title  }}">
+            <h6 class="card-title">{{item.snippet.title }} </h6>
+            <hr />
+            <p class="card-text">{{item.snippet.description }} </p>
+        </div>
+    </div>
+
+
+    <div class="text-md-center">
+        <button class="btn btn-link">Loading More...</button>
+    </div>
+
+</div>

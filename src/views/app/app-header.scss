@@ -7,13 +7,52 @@
 //  APP-HEADER
 //===================================================================
 
+
+
 .header {
   padding: 10px 0;
-  height: 60px;
+  height: 44px;
   overflow: hidden;
-  line-height: 40px;
+  line-height: 37px;
+  background: rgba(94,1,255,1);
+  background: -moz-linear-gradient(left, rgba(94,1,255,1) 0%, rgba(94,1,255,1) 55%, rgba(122,76,219,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(94,1,255,1)), color-stop(55%, rgba(94,1,255,1)), color-stop(100%, rgba(122,76,219,1)));
+  background: -webkit-linear-gradient(left, rgba(94,1,255,1) 0%, rgba(94,1,255,1) 55%, rgba(122,76,219,1) 100%);
+  background: -o-linear-gradient(left, rgba(94,1,255,1) 0%, rgba(94,1,255,1) 55%, rgba(122,76,219,1) 100%);
+  background: -ms-linear-gradient(left, rgba(94,1,255,1) 0%, rgba(94,1,255,1) 55%, rgba(122,76,219,1) 100%);
+  background: linear-gradient(to right, rgba(94,1,255,1) 0%, rgba(94,1,255,1) 55%, rgba(122,76,219,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e01ff', endColorstr='#7a4cdb', GradientType=1 );  margin-bottom: 25px;
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  color: white;
+
+
 }
 
+.header h1 {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  font-family: 'Raleway';
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 18px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  margin-top: -8px;
+  padding-right: 20px;
+}
+
+
+.header .search {
+  width: 150px;
+  float: left;
+  margin-top: -6px;
+  margin-left: 26px;
+  display: block;
+  color: inherit;
+  font-size: rem(14px);
+}
 
 .header__title {
   @include fa-icon(circle-o);
@@ -31,23 +70,24 @@
   }
 }
 
+.border-link{
+  padding-left: 10px;
+  border-left: 1px solid white;
 
+}
 .header__links {
   @include clearfix;
   float: right;
-  padding: 8px 0;
   line-height: 24px;
 
   li {
     float: left;
+    margin-left: 10px;
     list-style: none;
 
-    &:last-child {
-      margin-left: 12px;
-      padding-left: 12px;
-      border-left: 1px solid #333;
+    &:last-of-type {
+      margin-right: 10px;
     }
-
     &:first-of-type {
       border: none;
     }
@@ -70,7 +110,7 @@
   font-size: rem(24px);
 
   &:before {
-    font-family: 'FontAwesome';
+    font-family: 'Raleway';
     line-height: 24px;
   }
 }

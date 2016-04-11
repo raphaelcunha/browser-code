@@ -31,7 +31,7 @@ export class AuthRouteHelper {
 
   static requireUnauth(): boolean {
     const { auth, router } = AuthRouteHelper.dependencies();
-    if (auth.authenticated) router.navigate(['/Tasks']);
+    if (auth.authenticated) router.navigate(['/Tasks', '/Videos' ]);
     return !auth.authenticated;
   }
 }
