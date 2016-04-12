@@ -3,13 +3,13 @@ import {Http, Headers} from 'angular2/http';
 import { RouterLink} from 'angular2/router';
 
 
+
 @Component({
     selector: 'repository',
     styles: [
         require('./repository.scss')
     ],
     directives: [RouterLink],
-
     template: require('./repository.html')
 })
 export class Repository {
@@ -17,7 +17,9 @@ export class Repository {
     public ls: any = JSON.parse(localStorage.getItem('firebase:session::browsercode'));
     public accessToken: string = this.ls.github.accessToken;
     public items: Array <any>;
-    constructor(public http: Http) {}
+    public q: string =  null;
+
+    constructor(public http: Http) { }
 
 
     ngOnInit(){

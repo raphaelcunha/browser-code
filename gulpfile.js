@@ -145,7 +145,5 @@ gulp.task('test.watch', done => {
 //  RELEASE
 //---------------------------
 gulp.task('dist', gulp.series(
-  'lint',
-  'test',
   'build'
 ));

@@ -4,6 +4,7 @@ export declare class Repository {
     ls: any;
     accessToken: string;
     items: Array<any>;
+    q: string;
     constructor(http: Http);
     ngOnInit(): void;
     search(query: any): void;

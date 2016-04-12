@@ -1,6 +1,53 @@
-<div class="col-md-12">
-    <div class="col-md-8 col-xl-8 markdown-body" [innerHTML]="readme">
+<div class="repo-description container-fluid col-md-12">
+    <div class="row">
+        <div class="repo-about col-md-12 col-xl-12" *ngIf="repository">
+            <div class="container">
+                <div class>
+                    <img class="img-circle" src="{{repository.owner.avatar_url}}"/>
+                    <h1>{{repository.full_name}}</h1>
+                    <p> {{repository.description}}</p>
+                    <!--<ul>-->
+                    <!--<li> {{repository.forks_count}}</li>-->
+                    <!--<li> {{repository.stargazers_count}}</li>-->
+                    <!--<li> {{repository.watchers_count}}</li>-->
+                    <!--<li> {{repository.git_url}}</li>-->
+                    <!--<li> {{repository.created_at}}</li>-->
+                    <!--<li> {{repository.clone_url}}</li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
 
+
+        <div class="container">
+            <div class="repo-box repo-readme col-md-8 col-xl-9 markdown-body" [innerHTML]="readme"></div>
+
+
+            <div class="col-md-4 col-xl-3">
+
+
+                <div class="repo-box repo-info" *ngIf="repository">
+                    <ul>
+                        <li> {{repository.git_url}}</li>
+                        <li> {{repository.created_at}}</li>
+                        <li> {{repository.clone_url}}</li>
+                    </ul>
+                </div>
+
+
+                <div class="repo-box repo-dependencies" *ngIf="package">
+                    <h4>Dependencies</h4>
+                    <ul>
+                        <li *ngFor="#dev of package.dependencies | mapToIterable">
+                            <span class="octicon octicon-package"></span>{{dev.key}} = {{dev.val}}
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
 </div>

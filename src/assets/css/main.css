@@ -1,0 +1,16 @@
+body{
+    background: #ECECEC;
+    font-family: 'Roboto','Noto',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+
+ul {
+    margin: 0;
+    padding: 0;
+}

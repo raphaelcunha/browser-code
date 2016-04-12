@@ -2,10 +2,15 @@
   display: block;
     margin-top: 25px;
 }
+
+
+
 .card{
     height: 180px;
     margin-bottom: 25px;
     text-overflow: ellipsis;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+
 }
 
 .card a {
@@ -14,7 +19,7 @@
 
 .card:hover {
     cursor:pointer;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color:#F9F9F9;
 }
 
 .card-img-top {
@@ -70,7 +75,7 @@
     margin:0;
     padding:0;
     text-align: center;
-    border-top: 1px solid #5F01FF;
+    border-top: 1px solid rgb(206, 204, 204);
 
 }
 

@@ -1,21 +1,45 @@
-import {Component} from 'angular2/core';
+import {Component, Pipe, PipeTransform} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
 import { RouteParams } from 'angular2/router';
+
+
+
+@Pipe({
+    name: 'mapToIterable'
+})
+export class MapToIterable {
+    transform(dict: Object): Array {
+        var a = [];
+        for (var key in dict) {
+            if (dict.hasOwnProperty(key)) {
+                a.push({key: key, val: dict[key]});
+            }
+        }
+        return a;
+    }
+}
+
 
 @Component({
     selector: 'repositoryItem',
     styles: [
         require('./repositoryItem.scss'),
     ],
+    pipes: [MapToIterable],
     template: require('./repositoryItem.html')
 })
+
+
+
 export class RepositoryItem {
 
     public ls:any = JSON.parse(localStorage.getItem('firebase:session::browsercode'));
     public accessToken:string = this.ls.github.accessToken;
-    public item:Array <any>;
-    public readme: string = null;
-    public id:string;
+    public repository:any = null;
+    public readme:string = null;
+    public id:string = null;
+    public package:string = null;
+
 
     constructor(public http:Http, params:RouteParams) {
         this.id = params.get('id');
@@ -23,48 +47,61 @@ export class RepositoryItem {
 
 
     ngOnInit() {
+        this.getRepository();
+        this.getReadme();
+        this.getContent();
+    }
+
+
+    getContent() {
+        let url = `https://api.github.com/repos/${this.id}/contents/package.json`;
         let headers = new Headers();
         headers.append('Authorization', `token ${this.accessToken}`);
-        let url = `https://api.github.com/repos/${this.id}`;
         this.http.get(url, {headers: headers})
             .map(res => res.json())
             .subscribe(
                 data => {
-                    this.item = data.items;
-                    this.getReadme();
+                    this.package = JSON.parse(Base64.decode(data.content));
                 },
                 error => console.error('Error'),
                 () => console.log('Complete Search')
             );
     }
 
-    getReadme(){
+    getRepository() {
+        let url = `https://api.github.com/repos/${this.id}`;
+        let headers = new Headers();
+        headers.append('Authorization', `token ${this.accessToken}`);
+        this.http.get(url, {headers: headers})
+            .map(res => res.json())
+            .subscribe(
+                data => {
+                    this.repository = data;
+                },
+                error => console.error('Error'),
+                () => console.log('Complete Search')
+            );
+    }
+
+    getReadme() {
         let headers = new Headers();
         let url = `https://api.github.com/repos/${this.id}/readme`;
         this.http.get(url, {headers: headers})
             .map(res => res.json())
             .subscribe(
                 data => {
-                    this.getFileReadme(data.download_url);
-                },
-                error => console.error('Error'),
-                () => console.log('Complete Search')
-            );
-    }
-
-
-    getFileReadme(url){
-        let headers = new Headers();
-        this.http.get(url, {headers: headers})
-            .subscribe(
-                data => {
-                    let showdown  = require('showdown');
+                    let readme = Base64.decode(data.content);
+                    let showdown = require('showdown');
                     let converter = new showdown.Converter();
-                    this.readme   = converter.makeHtml(data._body);
+                    this.readme = converter.makeHtml(readme);
                 },
                 error => console.error('Error'),
                 () => console.log('Complete Search')
             );
     }
+
+
+
+
 
 }
