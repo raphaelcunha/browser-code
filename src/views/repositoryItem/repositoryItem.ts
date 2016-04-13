@@ -1,6 +1,6 @@
-import {Component, Pipe, PipeTransform} from 'angular2/core';
+import {Component, Pipe} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
-import { RouteParams } from 'angular2/router';
+import { RouteParams, RouterLink } from 'angular2/router';
 
 
 
@@ -8,9 +8,9 @@ import { RouteParams } from 'angular2/router';
     name: 'mapToIterable'
 })
 export class MapToIterable {
-    transform(dict: Object): Array {
-        var a = [];
-        for (var key in dict) {
+    transform(dict) {
+        let a = [];
+        for (let key in dict) {
             if (dict.hasOwnProperty(key)) {
                 a.push({key: key, val: dict[key]});
             }
@@ -25,6 +25,7 @@ export class MapToIterable {
     styles: [
         require('./repositoryItem.scss'),
     ],
+    directives: [RouterLink],
     pipes: [MapToIterable],
     template: require('./repositoryItem.html')
 })

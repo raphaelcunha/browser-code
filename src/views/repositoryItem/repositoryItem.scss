@@ -2,6 +2,9 @@
   display: block;
 }
 
+.btn-repository {
+    padding: 6px;
+}
 
 .repo-description .repo-about {
     min-height: 150px;
@@ -40,6 +43,19 @@
     list-style: none;
 }
 
+
+.repo-description .repo-activity{
+    margin-top: 15px;
+    padding-bottom: 25px;
+}
+
+
+.repo-description .repo-activity ul li {
+    padding-left: 25px;
+    padding-right: 25px;
+    list-style: none;
+}
+
 .repo-description .repo-dependencies{
     margin-top: 25px;
     font-size: 14px;
@@ -47,7 +63,7 @@
 }
 
 
-.repo-description .repo-dependencies h4{
+.repo-description  h4{
     font-size: 20px;
     padding-top: 25px;
     font-weight: 600;

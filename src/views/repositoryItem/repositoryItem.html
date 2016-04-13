@@ -26,11 +26,19 @@
             <div class="col-md-4 col-xl-3">
 
 
-                <div class="repo-box repo-info" *ngIf="repository">
+                <div class="repo-info text-md-center" *ngIf="repository">
+                    <a class="btn btn-primary btn-repository" [routerLink]=" ['/Repository'] ">
+                        <i class="octicon octicon-arrow-left"></i> Go Back
+                    </a>
+                    <a class="btn btn-primary btn-repository" href="https://github.com/{{repository.full_name}}/archive/master.zip">
+                        <i class="octicon octicon-desktop-download"></i> Download Zip
+                    </a>
+                </div>
+
+                <div class="repo-box repo-activity" *ngIf="repository">
                     <ul>
-                        <li> {{repository.git_url}}</li>
-                        <li> {{repository.created_at}}</li>
-                        <li> {{repository.clone_url}}</li>
+                        <h4>Activity</h4>
+                        <li> Last update: {{repository.updated_at }}</li>
                     </ul>
                 </div>
 

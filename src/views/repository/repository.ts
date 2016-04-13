@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
-import { RouterLink} from 'angular2/router';
+import { RouterLink, RouteParams} from 'angular2/router';
 
 
 
@@ -19,19 +19,24 @@ export class Repository {
     public items: Array <any>;
     public q: string =  null;
 
-    constructor(public http: Http) { }
+    constructor(public http: Http, params: RouteParams) {
+        this.q = params.get('q');
+        if (this.q) {
+            this.searchGithub(this.q);
+        }else{
+            this.q = 'javascript';
+        }
+    }
 
 
     ngOnInit(){
-       this.searchGithub('angular');
+       this.searchGithub(this.q);
     }
 
-    search(query){
-        this.searchGithub(query);
-    }
 
     searchGithub(query){
         let url = `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc`;
+
         let headers = new Headers();
         headers.append('Authorization', `token ${this.accessToken}`);
         this.http.get(url, {headers: headers})
