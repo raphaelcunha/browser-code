@@ -6,7 +6,9 @@ import { Tasks } from 'src/views/tasks';
 import { Videos } from 'src/views/videos';
 import { Repository } from 'src/views/repository';
 import { RepositoryItem } from 'src/views/repositoryItem';
+import { Users } from 'src/views/users';
 import { AppHeader } from './app-header';
+
 
 
 @RouteConfig([
@@ -15,6 +17,8 @@ import { AppHeader } from './app-header';
   {path: '/videos', component: Videos, as: 'Videos'},
   {path: '/repository', component: Repository, as: 'Repository'},
   {path: '/repository/:id', component: RepositoryItem, name: 'RepositoryItem'},
+  {path: '/users', component: Users, as: 'Users'},
+
 
 ])
 
@@ -28,13 +32,10 @@ import { AppHeader } from './app-header';
     require('./app.scss')
   ],
   template: `
-    <app-header
-      [authenticated]="auth.authenticated"
-      (signOut)="signOut()"></app-header>
-    
-    <main class="main">
-      <router-outlet></router-outlet>
-    </main>
+      <app-header [authenticated]="auth.authenticated" (signOut)="signOut()"></app-header>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
   `
 })
 

@@ -9,8 +9,9 @@
 .repo-description .repo-about {
     min-height: 150px;
     padding: 40px;
-    background-color: #3B3948;
-    color: white;
+    background-color: #E7E6E8;;
+    color: #454355;
+
 }
 
 .repo-description .repo-about h1 {
@@ -29,9 +30,10 @@
 
 .repo-description .repo-readme {
     padding: 40px;
-    margin-top: 35px;
-
+    margin-top: 10px;
 }
+
+
 
 .repo-description .repo-info {
     font-size: 14px;
@@ -86,7 +88,8 @@
 
 
 
-.repo-description .repo-box {
+ .repo-box {
+     margin-top: 10px;
     background: white;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }

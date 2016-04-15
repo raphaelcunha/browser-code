@@ -11,8 +11,10 @@ export declare class RepositoryItem {
     readme: string;
     id: string;
     package: string;
+    header: boolean;
     constructor(http: Http, params: RouteParams);
     ngOnInit(): void;
+    back(): void;
     getContent(): void;
     getRepository(): void;
     getReadme(): void;

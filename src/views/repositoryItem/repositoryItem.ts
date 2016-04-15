@@ -40,9 +40,11 @@ export class RepositoryItem {
     public readme:string = null;
     public id:string = null;
     public package:string = null;
+    public header:boolean = false;
 
 
-    constructor(public http:Http, params:RouteParams) {
+
+    constructor(public http: Http, params: RouteParams) {
         this.id = params.get('id');
     }
 
@@ -53,6 +55,10 @@ export class RepositoryItem {
         this.getContent();
     }
 
+
+    back() {
+       window.history.back(-1);
+    }
 
     getContent() {
         let url = `https://api.github.com/repos/${this.id}/contents/package.json`;

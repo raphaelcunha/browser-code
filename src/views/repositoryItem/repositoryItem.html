@@ -1,49 +1,51 @@
 <div class="repo-description container-fluid col-md-12">
-    <div class="row">
+    <div class="row ">
+
+
         <div class="repo-about col-md-12 col-xl-12" *ngIf="repository">
-            <div class="container">
-                <div class>
-                    <img class="img-circle" src="{{repository.owner.avatar_url}}"/>
-                    <h1>{{repository.full_name}}</h1>
-                    <p> {{repository.description}}</p>
-                    <!--<ul>-->
-                    <!--<li> {{repository.forks_count}}</li>-->
-                    <!--<li> {{repository.stargazers_count}}</li>-->
-                    <!--<li> {{repository.watchers_count}}</li>-->
-                    <!--<li> {{repository.git_url}}</li>-->
-                    <!--<li> {{repository.created_at}}</li>-->
-                    <!--<li> {{repository.clone_url}}</li>-->
-                    <!--</ul>-->
-                </div>
-            </div>
+            <img class="img-circle" src="{{repository.owner.avatar_url}}"/>
+            <h1>{{repository.full_name}}</h1>
+            <p> {{repository.description}}</p>
+            <!--<ul>-->
+            <!--<li> {{repository.forks_count}}</li>-->
+            <!--<li> {{repository.stargazers_count}}</li>-->
+            <!--<li> {{repository.watchers_count}}</li>-->
+            <!--<li> {{repository.git_url}}</li>-->
+            <!--<li> {{repository.created_at}}</li>-->
+            <!--<li> {{repository.clone_url}}</li>-->
+            <!--</ul>-->
         </div>
 
 
-        <div class="container">
-            <div class="repo-box repo-readme col-md-8 col-xl-9 markdown-body" [innerHTML]="readme"></div>
+        <div class="clearfix"></div>
+
+        <div class="repo-box">
 
 
-            <div class="col-md-4 col-xl-3">
+            <div class="repo-readme col-md-8 col-xl-7 markdown-body" [innerHTML]="readme"></div>
+
+            <div class="repo-fixed col-md-4 col-xl-3">
 
 
-                <div class="repo-info text-md-center" *ngIf="repository">
-                    <a class="btn btn-primary btn-repository" [routerLink]=" ['/Repository'] ">
+                <div class="repo-info text-md-left" *ngIf="repository">
+                    <button class="btn btn-primary btn-repository" (click)="back()">
                         <i class="octicon octicon-arrow-left"></i> Go Back
-                    </a>
-                    <a class="btn btn-primary btn-repository" href="https://github.com/{{repository.full_name}}/archive/master.zip">
+                    </button>
+                    <a class="btn btn-primary btn-repository"
+                       href="https://github.com/{{repository.full_name}}/archive/master.zip">
                         <i class="octicon octicon-desktop-download"></i> Download Zip
                     </a>
                 </div>
 
-                <div class="repo-box repo-activity" *ngIf="repository">
+                <div class="repo-activity" *ngIf="repository">
                     <ul>
                         <h4>Activity</h4>
                         <li> Last update: {{repository.updated_at }}</li>
                     </ul>
                 </div>
 
-
-                <div class="repo-box repo-dependencies" *ngIf="package">
+                <hr/>
+                <div class="repo-dependencies" *ngIf="package">
                     <h4>Dependencies</h4>
                     <ul>
                         <li *ngFor="#dev of package.dependencies | mapToIterable">
@@ -54,8 +56,9 @@
 
 
             </div>
+            <div class="clearfix"></div>
         </div>
 
-        <div class="clearfix"></div>
+
     </div>
 </div>

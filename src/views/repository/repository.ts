@@ -1,8 +1,7 @@
 import {Component} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
 import { RouterLink, RouteParams} from 'angular2/router';
-
-
+import { SearchService } from 'src/core/search';
 
 @Component({
     selector: 'repository',
@@ -12,6 +11,7 @@ import { RouterLink, RouteParams} from 'angular2/router';
     directives: [RouterLink],
     template: require('./repository.html')
 })
+
 export class Repository {
 
     public ls: any = JSON.parse(localStorage.getItem('firebase:session::browsercode'));
@@ -19,23 +19,29 @@ export class Repository {
     public items: Array <any>;
     public q: string =  null;
 
-    constructor(public http: Http, params: RouteParams) {
+
+    constructor(public http: Http, params: RouteParams, searchService: SearchService) {
+
+        console.log(searchService.getValue());
+
         this.q = params.get('q');
         if (this.q) {
             this.searchGithub(this.q);
         }else{
             this.q = 'javascript';
         }
+
     }
 
 
     ngOnInit(){
+
        this.searchGithub(this.q);
     }
 
 
     searchGithub(query){
-        let url = `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc`;
+        let url = `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc&per_page=100`;
 
         let headers = new Headers();
         headers.append('Authorization', `token ${this.accessToken}`);

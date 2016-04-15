@@ -8,6 +8,8 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { AUTH_PROVIDERS, AuthRouteHelper } from './core/auth';
 import { FIREBASE_APP_PROVIDERS } from './core/firebase';
 import { TASK_PROVIDERS } from './core/task';
+import { SEARCH_SERVICE } from './core/search';
+
 
 // root component
 import { App } from './views/app';
@@ -27,6 +29,7 @@ const providers: any[] = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   TASK_PROVIDERS,
+  SEARCH_SERVICE,
   provide(APP_BASE_HREF, {useValue: '/'})
 ];
 
