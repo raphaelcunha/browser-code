@@ -17,16 +17,29 @@ export class Users {
     public accessToken:string = this.ls.github.accessToken;
     public items:string[] = [];
     public q:string = '';
+    public lang:string = '';
     public language:string = null;
 
 
     constructor(public http:Http, params:RouteParams) {
         this.q = params.get('q');
-        if (this.q != null) {
-            this.searchGithub(this.q + '+', this.language);
-        } else {
-            this.language = 'javascript';
-            this.searchGithub(null, this.language);
+        this.lang = params.get('lang');
+
+        if (this.q != null && this.lang == null) {
+
+            this.searchGithub(this.q + '+', null);
+
+        } else if (this.q == null && this.lang == null){
+
+            this.searchGithub(null, null);
+
+        } else if (this.q == null && this.lang != null){
+
+            this.searchGithub(null, this.lang);
+
+        }else{
+
+            this.searchGithub(this.q, this.lang);
 
         }
     }

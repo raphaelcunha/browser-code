@@ -25,11 +25,10 @@
 }
 
 .card-img-top {
-    width:35%;
     float:left;
+    height: 72px;
+    padding: 10px;
     vertical-align: middle;
-    padding-left: 15px;
-    margin-top: 10px;
 }
 
 .card-title {
@@ -37,8 +36,12 @@
     float: left;
     font-size: 16px;
     width: 65%;
+    height:30px;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
     color:#373a3c;
-    padding: 11px 6px 0px 7px;
+    padding: 15px 8px 0px 7px;
+    margin-bottom: 0px;
 }
 
 .card-title span {
@@ -48,7 +51,7 @@
 .card-text {
     float:left;
     font-size: 12px;
-    padding: 0 15px;
+    padding: 0 5px;
     text-overflow: ellipsis;
     height: 75px;
     overflow:hidden;

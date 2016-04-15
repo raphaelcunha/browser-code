@@ -1,7 +1,6 @@
 import {Component} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
 import { RouterLink, RouteParams} from 'angular2/router';
-import { SearchService } from 'src/core/search';
 
 @Component({
     selector: 'repository',
@@ -20,9 +19,8 @@ export class Repository {
     public q: string =  null;
 
 
-    constructor(public http: Http, params: RouteParams, searchService: SearchService) {
+    constructor(public http: Http, params: RouteParams) {
 
-        console.log(searchService.getValue());
 
         this.q = params.get('q');
         if (this.q) {

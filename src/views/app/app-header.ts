@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from 'angular2/core';
-import {  Router, RouterLink } from 'angular2/router';
+import { Router, RouterLink } from 'angular2/router';
 import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { SearchService } from 'src/core/search';
 
 
 @Component({
@@ -80,18 +79,15 @@ export class AppHeader {
     public header:boolean = true;
 
 
-    constructor(private router:Router, searchService: SearchService) {
-        this.q = 'Javascript';
-        searchService.setValue(this.q);
-        console.log(this.user);
+    constructor(private router:Router) {
+        this.q = '';
     }
 
 
 
     closed() {
-
-
-        //this.router.navigate(['Repository', {q: this.q}]);
+        
+        window.location.href = window.location.href + "?q="+ this.q;
     }
 
 

@@ -1,16 +1,19 @@
 <div class="col-md-12" *ngIf="!readme">
     <div class="col-md-3 col-xl-2" *ngFor="#item of items">
         <div class="card" [routerLink]=" ['/RepositoryItem', {id: item.id}] ">
-            <img class="card-img-top  text-md-center" src="{{item.avatar_url}}">
-            <h2 class="card-title">{{item.name}} <span>{{item.location}}</span></h2>
 
-            <p class="card-text">
-
-                <span *ngIf="item.company"><strong>Company: </strong>{{item.company}}<br /></span>
-                <span *ngIf="item.blog"><strong>Url: </strong>{{item.blog}}<br /></span>
-                <span *ngIf="item.email"><strong>E-mail: </strong>{{item.email}}</span>
-
-            </p>
+            <div style="width:30%; float:left;">
+                <img class="card-img-top  text-md-center" src="{{item.avatar_url}}">
+            </div>
+            <div style="width:70%; float:left;">
+                <h2 class="card-title">{{item.name}}</h2>
+                <p class="card-text">
+                    <span *ngIf="item.location"><strong>Location: </strong>{{item.location}}<br /></span>
+                    <span *ngIf="item.company"><strong>Company: </strong>{{item.company}}<br /></span>
+                    <span *ngIf="item.blog"><strong>Url: </strong>{{item.blog}}<br /></span>
+                    <span *ngIf="item.email"><strong>E-mail: </strong>{{item.email}}</span>
+                </p>
+            </div>
             <div class="clearfix"></div>
             <div class="card-repository">
                 <ul>
