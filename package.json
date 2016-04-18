@@ -1,10 +1,10 @@
 {
-  "name": "todo-angular2-firebase",
+  "name": "Browsercode",
   "version": "0.5.0",
-  "description": "Todo app with Angular2, AngularFire2, and Firebase",
+  "description": "Search repository and user in github",
   "author": {
-    "name": "Richard Park",
-    "email": "objectiv@gmail.com"
+    "name": "Raphael Santos",
+    "email": "raphael.s.cunha@gmail.com"
   },
   "homepage": "https://github.com/r-park/todo-angular2-firebase",
   "repository": {
@@ -31,7 +31,8 @@
     "firebase": "~2.4.2",
     "ng2-bootstrap": "^1.0.11",
     "ng2-bs3-modal": "^0.5.1",
-    "rxjs": "5.0.0-beta.4"
+    "rxjs": "5.0.0-beta.4",
+    "showdown": "^1.3.0"
   },
   "devDependencies": {
     "autoprefixer": "~6.3.5",

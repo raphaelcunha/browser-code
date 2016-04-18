@@ -18,7 +18,6 @@ export class Users {
     public items:string[] = [];
     public q:string = '';
     public lang:string = '';
-    public language:string = null;
 
 
     constructor(public http:Http, params:RouteParams) {
@@ -49,13 +48,13 @@ export class Users {
 
         let url;
         if (query != null && language == null ) {
-            url = `https://api.github.com/search/users?q=${query}followers:>10+sort:followers&order=desc&per_page=100`;
+            url = `https://api.github.com/search/users?q=${query}followers:>100+sort:followers&order=desc&per_page=100`;
         } else if (query == null && language != null) {
-            url = `https://api.github.com/search/users?q=followers:>10+sort:followers+language:${language}&order=desc&per_page=100`;
+            url = `https://api.github.com/search/users?q=followers:>100+sort:followers+language:${language}&order=desc&per_page=100`;
         } else if (query == null && language == null) {
-            url = `https://api.github.com/search/users?q=followers:>10+sort:followers&order=desc&per_page=100`;
+            url = `https://api.github.com/search/users?q=followers:>100+sort:followers&order=desc&per_page=100`;
         }else{
-            url = `https://api.github.com/search/users?q=${query}followers:>10+sort:followers+language:${language}&order=desc&per_page=100`;
+            url = `https://api.github.com/search/users?q=${query}followers:>100+sort:followers+language:${language}&order=desc&per_page=100`;
         }
 
 

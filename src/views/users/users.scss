@@ -3,16 +3,13 @@
     margin-top: 25px;
 }
 
-
-
 .card{
-    height: 170px;
-    max-height: 170px;
-    min-height: 170px;
+    height: 140px;
+    max-height: 140px;
+    min-height: 140px;
     margin-bottom: 25px;
     text-overflow: ellipsis;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-
 }
 
 .card a {
@@ -26,7 +23,7 @@
 
 .card-img-top {
     float:left;
-    height: 72px;
+    width: 100%;
     padding: 10px;
     vertical-align: middle;
 }
@@ -35,12 +32,11 @@
     word-wrap: break-word;
     float: left;
     font-size: 16px;
-    width: 65%;
-    height:30px;
+    width: 100%;
     overflow-y: hidden;
     text-overflow: ellipsis;
-    color:#373a3c;
-    padding: 15px 8px 0px 7px;
+    color: #373a3c;
+    padding: 15px 5px 0px 4px;
     margin-bottom: 0px;
 }
 
@@ -70,8 +66,6 @@
         color: black;
     }
 }
-
-
 
 .card-repository{
     position:absolute;

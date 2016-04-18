@@ -13,6 +13,15 @@ body{
     overflow-x: hidden;
 }
 
+::selection {
+    background: #b6b1dd; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #454355; /* Gecko Browsers */
+}
+
+
+
 
 
 ul {

@@ -1,22 +1,28 @@
 :host{
-  display: block;
+    display: block;
 }
 
-.repository{
-    margin-left: 60px;
+::selection {
+    background: #b6b1dd; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #454355; /* Gecko Browsers */
+}
 
+.repo-content{
+    padding: 30px;
 }
 
 .btn-repository {
     padding: 6px;
-
 }
+
+
 
 .repo-description .repo-about {
     min-height: 150px;
-    padding: 40px;
-    background-color: #E7E6E8;;
     color: #454355;
+    margin-top: -60px;
 
 }
 
@@ -30,12 +36,10 @@
 
 .repo-description .repo-about img {
     width:100px;
-    margin-right: 20px;
-    float:left;
+    margin-bottom: 20px;
 }
 
 .repo-description .repo-readme {
-    padding: 40px;
     margin-top: 10px;
 }
 
@@ -94,8 +98,8 @@
 
 
 
- .repo-box {
-     margin-top: 10px;
+.repo-box {
+    margin-top: 10px;
     background: white;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }

@@ -1,0 +1,101 @@
+<div class="repo-description container-fluid" *ngIf="profile">
+    <div class="row">
+        <div class="repo-about col-md-12 col-xl-12">
+            <div class="row">
+                <div style="
+                background: url('{{profile.avatar_url}})') center center no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                -webkit-filter: blur(5px);
+                filter: blur(5px);
+                position:absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0.15;
+                "></div>
+                <div class="repo-content">
+                    <div class="col-md-12 text-md-center">
+                        <img class="img-circle" src="{{profile.avatar_url}}"/>
+                        <br/>
+                        <h1>{{profile.name}}</h1>
+                        <p>
+                            <span *ngIf="profile.location"><strong>Location: </strong>{{profile.location}}<br/></span>
+                            <span *ngIf="profile.company"><strong>Company: </strong>{{profile.company}}<br/></span>
+                            <span *ngIf="profile.blog"><strong>Url: </strong><a
+                                    href="{{profile.blog}}">{{profile.blog}}</a><br/></span>
+                            <span *ngIf="profile.email"><strong>E-mail: </strong>{{profile.email}}</span>
+                        </p>
+                    </div>
+                    <!--<ul>-->
+                    <!--<li> {{user.forks_count}}</li>-->
+                    <!--<li> {{user.stargazers_count}}</li>-->
+                    <!--<li> {{user.watchers_count}}</li>-->
+                    <!--<li> {{user.git_url}}</li>-->
+                    <!--<li> {{user.created_at}}</li>-->
+                    <!--<li> {{user.clone_url}}</li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+        <div class="repo-box">
+
+
+            <div class="repo-readme col-md-8 col-xl-7">
+                <div *ngIf="events">
+                    <ul>
+                        <h4>Events</h4>
+                        <li *ngFor="#event of events">
+                                <i class="octicon octicon-star" *ngIf="event.type == 'WatchEvent'"></i>
+                                <i class="octicon octicon-comment-discussion" *ngIf="event.type == 'IssueCommentEvent'"></i>
+                                <i class="octicon octicon-issue-opened" *ngIf="event.type == 'IssuesEvent' && event.payload.action == 'created'"></i>
+                                <i class="octicon octicon-issue-closed" *ngIf="event.type == 'IssuesEvent' && event.payload.action == 'closed'"></i>
+                                <i class="octicon octicon-git-commit" *ngIf="event.type == 'PushEvent && event.payload.commit != null'"></i>
+                                {{event.repo.name }}
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <div class="repo-fixed col-md-4 col-xl-3">
+
+
+                <div class="repo-info text-md-left" *ngIf="repository">
+                    <button class="btn btn-primary btn-repository" (click)="back()">
+                        <i class="octicon octicon-arrow-left"></i> Go Back
+                    </button>
+                    <a class="btn btn-primary btn-repository"
+                       href="https://github.com/{{profile.full_name}}/archive/master.zip">
+                        <i class="octicon octicon-desktop-download"></i> Download Zip
+                    </a>
+                </div>
+
+                <div class="repo-activity" *ngIf="repos">
+                    <ul>
+                        <h4>Repositorys</h4>
+                        <li *ngFor="#repo of repos">
+                           <a href="repository/{{repo.full_name}}">
+                            <i class="octicon octicon-repo"></i>
+                            {{repo.name }}
+                           </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr/>
+
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,7 +1,8 @@
 import {Component, Pipe} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
 import { RouteParams, RouterLink } from 'angular2/router';
-
+import { AuthService } from 'src/core/auth';
+import { AppHeader } from 'src/views/app/app-header';
 
 
 @Pipe({
@@ -25,7 +26,7 @@ export class MapToIterable {
     styles: [
         require('./repositoryItem.scss'),
     ],
-    directives: [RouterLink],
+    directives: [AppHeader, RouterLink],
     pipes: [MapToIterable],
     template: require('./repositoryItem.html')
 })
@@ -38,14 +39,16 @@ export class RepositoryItem {
     public accessToken:string = this.ls.github.accessToken;
     public repository:any = null;
     public readme:string = null;
-    public id:string = null;
+    public owner:string = null;
+    public repo:string = null;
     public package:string = null;
     public header:boolean = false;
 
 
 
-    constructor(public http: Http, params: RouteParams) {
-        this.id = params.get('id');
+    constructor(public http: Http, private auth: AuthService , private params: RouteParams) {
+        this.owner = params.get('owner');
+        this.repo = params.get('repo');
     }
 
 
@@ -61,14 +64,14 @@ export class RepositoryItem {
     }
 
     getContent() {
-        let url = `https://api.github.com/repos/${this.id}/contents/package.json`;
+        let url = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/package.json`;
         let headers = new Headers();
         headers.append('Authorization', `token ${this.accessToken}`);
         this.http.get(url, {headers: headers})
             .map(res => res.json())
             .subscribe(
                 data => {
-                    this.package = JSON.parse(Base64.decode(data.content));
+                    this.package = JSON.parse(atob(data.content));
                 },
                 error => console.error('Error'),
                 () => console.log('Complete Search')
@@ -76,7 +79,7 @@ export class RepositoryItem {
     }
 
     getRepository() {
-        let url = `https://api.github.com/repos/${this.id}`;
+        let url = `https://api.github.com/repos/${this.owner}/${this.repo}`;
         let headers = new Headers();
         headers.append('Authorization', `token ${this.accessToken}`);
         this.http.get(url, {headers: headers})
@@ -92,12 +95,12 @@ export class RepositoryItem {
 
     getReadme() {
         let headers = new Headers();
-        let url = `https://api.github.com/repos/${this.id}/readme`;
+        let url = `https://api.github.com/repos/${this.owner}/${this.repo}/readme`;
         this.http.get(url, {headers: headers})
             .map(res => res.json())
             .subscribe(
                 data => {
-                    let readme = Base64.decode(data.content);
+                    var readme = atob(data.content);
                     let showdown = require('showdown');
                     let converter = new showdown.Converter();
                     this.readme = converter.makeHtml(readme);

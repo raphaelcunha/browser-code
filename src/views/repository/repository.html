@@ -1,24 +1,28 @@
-<div class="col-md-12" *ngIf="!readme">
+<app-header [authenticated]="auth.authenticated"  (signOut)="signOut()"></app-header>
+
+<div class="repository col-md-12" *ngIf="!readme">
     <div class="col-md-3 col-xl-2" *ngFor="#item of items">
-        <div class="card" [routerLink]=" ['/RepositoryItem', {id: item.full_name}] ">
-            <img class="card-img-top  text-md-center" src="{{item.owner.avatar_url}} " width="30%">
-            <h6 class="card-title">{{item.name}} </h6>
-            <p class="card-text">
-                {{item.description}}
-                <a href="https://github.com/{{item.full_name}}/archive/master.zip">
-                    <i class="octicon octicon-desktop-download"></i>
-                </a>
-            </p>
-            <div class="clearfix"></div>
-            <div class="card-repository">
-                <ul>
-                    <li><i class="octicon octicon-star"></i> {{item.stargazers_count}}</li>
-                    <li><i class="octicon octicon-repo-forked"></i>{{item.forks}}</li>
-                    <li><i class="octicon octicon-eye-watch"></i> {{item.watchers}}</li>
-                </ul>
+        <a href="repository/{{item.full_name}}">
+            <div class="card">
+                <img class="card-img-top  text-md-center" src="{{item.owner.avatar_url}} " width="30%">
+                <h6 class="card-title">{{item.name}} </h6>
+                <p class="card-text">
+                    {{item.description}}
+                    <a href="https://github.com/{{item.full_name}}/archive/master.zip">
+                        <i class="octicon octicon-desktop-download"></i>
+                    </a>
+                </p>
+                <div class="clearfix"></div>
+                <div class="card-repository">
+                    <ul>
+                        <li><i class="octicon octicon-star"></i> {{item.stargazers_count}}</li>
+                        <li><i class="octicon octicon-repo-forked"></i>{{item.forks}}</li>
+                        <li><i class="octicon octicon-eye-watch"></i> {{item.watchers}}</li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
-        </div>
+        </a>
     </div>
 </div>
 
