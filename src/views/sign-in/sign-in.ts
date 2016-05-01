@@ -29,6 +29,6 @@ export class SignIn {
   }
 
   private postSignIn(): void {
-    this.router.navigate(['/Repository']);
+    this.router.navigate(['/Home']);
   }
 }

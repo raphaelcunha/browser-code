@@ -15,6 +15,7 @@ export class TaskService {
 
     this.taskItems$ = af.list(path) as FirebaseListObservable<ITask[]>;
 
+
     // FirebaseListObservable currently lacks an `update()` method.
     // For now use FirebaseRef for updates.
     this.ref = ref.child(path);

@@ -19,13 +19,16 @@ export class Repository {
     public ls: any = JSON.parse(localStorage.getItem('firebase:session::browsercode'));
     public accessToken: string = this.ls.github.accessToken;
     public items: Array <any>;
-    public lang: string =  null;
+    public lang: any =  null;
 
 
     constructor(public http: Http, private auth: AuthService , private params: RouteParams) {
-        this.lang = params.get('lang');
+        this.lang = JSON.parse(window.localStorage.getItem('language'));
+
+        console.log(this.lang);
+
         if (this.lang) {
-            this.searchGithub(this.lang);
+            this.searchGithub(this.lang.github);
         }else{
             this.lang = 'javascript';
             this.searchGithub(this.lang);

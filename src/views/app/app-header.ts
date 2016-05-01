@@ -25,10 +25,12 @@ export class AppHeader {
     public query:string = null;
     public header:boolean = null;
     public form:ControlGroup;
+    public language = null;
 
 
     constructor(private router:Router, params:RouteParams, private fb:FormBuilder) {
         this.query = params.get('lang');
+        this.language = window.localStorage.getItem('language');
     }
 
 

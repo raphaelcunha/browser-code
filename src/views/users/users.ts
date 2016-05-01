@@ -1,13 +1,15 @@
 import {Component} from 'angular2/core';
 import {Http, Headers} from 'angular2/http';
 import { RouterLink, RouteParams} from 'angular2/router';
+import { AuthService } from 'src/core/auth';
+import { AppHeader } from 'src/views/app/app-header';
 
 @Component({
     selector: 'users',
     styles: [
         require('./users.scss')
     ],
-    directives: [RouterLink],
+    directives: [AppHeader, RouterLink],
     template: require('./users.html')
 })
 
@@ -20,7 +22,7 @@ export class Users {
     public lang:string = '';
 
 
-    constructor(public http:Http, params:RouteParams) {
+    constructor(public http: Http, private auth: AuthService , private params: RouteParams) {
         this.q = params.get('q');
         this.lang = params.get('lang');
 

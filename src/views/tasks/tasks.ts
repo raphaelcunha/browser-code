@@ -31,5 +31,7 @@ import { TaskList } from './task-list/task-list';
 @CanActivate(() => AuthRouteHelper.requireAuth())
 
 export class Tasks {
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) {
+    console.log(taskService);
+  }
 }
