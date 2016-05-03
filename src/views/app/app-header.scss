@@ -9,20 +9,83 @@
 
 
 .header{
-  float:left;
+  float: left;
   padding-left: 25px;
   margin-left: 60px;
-  height:60px;
-  width:100%;
+  padding-top: 15px;
+  height: 75px;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20px;
+  z-index: 99999999999999;
+  position: relative;
 }
 
-.header h2 {
-  padding-top: 18px;
+.header img {
+  float:left;
+}
+
+.header h1 {
+  padding-top: 8px;
   font-size: 24px;
   font-weight: 400;
   padding-left: 8px;
+  float:left;
 }
 
+
+.header.languages{
+
+  height: 100px;
+  margin-top: -25px;
+  background: #3e5e85;
+  margin-left: 60px;
+  z-index:9999;
+}
+
+.header.languages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header.languages ul li{
+  float:left;
+  margin-left: 15px;
+  text-align: center;
+}
+
+.header.languages ul li a {
+  display: block;
+  padding:5px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.header.languages ul li a .icone{
+  height:45px;
+}
+
+.header.languages ul li a img {
+  float: none;
+  text-align: center;
+}
+
+.header.languages ul li span{
+  display: block;
+  color: white;
+  margin-top: 3px;
+}
+
+
+.header.languages .btn-close {
+  padding-top: 10px;
+}
+
+.header.languages .btn-close img{
+  float:right;
+  width:50px;
+}
 
 .sidebar {
   width: 60px;
@@ -33,6 +96,8 @@
   display: block;
   text-align: center;
 }
+
+
 
 .sidebar .logo {
   width: 52px;
@@ -61,7 +126,7 @@
   cursor: pointer !important;
   text-align: center;
   width:60px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .sidebar ul li img {

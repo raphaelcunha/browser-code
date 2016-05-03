@@ -15,9 +15,12 @@ import { AppHeader } from 'src/views/app/app-header';
 })
 export class Videos {
 
-    key: string = 'AIzaSyA_AliVKxvNDgi13nClTygYedgab8phBLA';
-    videos: string = null;
-    language =  null;
+    public key: string = 'AIzaSyA_AliVKxvNDgi13nClTygYedgab8phBLA';
+    public videos: string = null;
+    public language =  null;
+    public subHeader = true;
+
+
 
     constructor(public http: Http, private auth: AuthService, private _router:Router) {
         this.language = JSON.parse(window.localStorage.getItem('language'));
@@ -25,19 +28,24 @@ export class Videos {
 
 
     ngOnInit(){
-        let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.language.github}&maxResults=12&key=${this.key}`;
+        let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.language.youtube}&order=relevance&maxResults=48&key=${this.key}`;
         this.http.get(url)
             .map(res => res.json())
             .subscribe(
-                videos => this.videos = videos.items,
+                videos => {
+                    console.log(videos);
+                    this.videos = videos.items;
+                },
                 error => console.error('Error'),
                 () => console.log('completado')
             );
     }
 
 
+
+
     public selectVideo(id) {
-        this._router.navigate(['/VideosItem', {id: id, id_video: null}]);
+        this._router.navigate(['/VideosItem', {id: id, id_video: 'default'}]);
     }
 
 

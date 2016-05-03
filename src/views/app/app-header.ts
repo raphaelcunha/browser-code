@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewCh
 import { Router, RouterLink, RouteParams, RouterOutlet } from 'angular2/router';
 import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import {FORM_DIRECTIVES, CORE_DIRECTIVES, FormBuilder, Control, ControlGroup} from 'angular2/common';
-
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,6 +14,7 @@ import {FORM_DIRECTIVES, CORE_DIRECTIVES, FormBuilder, Control, ControlGroup} fr
 
 export class AppHeader {
 
+    @Input() subHeader:boolean;
     @Input() authenticated:boolean;
     @Output() signOut:EventEmitter<any> = new EventEmitter(false);
     @ViewChild('myModal')
@@ -21,16 +22,18 @@ export class AppHeader {
 
 
     public user:any = JSON.parse(localStorage.getItem('firebase:session::browsercode'));
-    public q:string = null;
     public query:string = null;
     public header:boolean = null;
-    public form:ControlGroup;
     public language = null;
+    public items:FirebaseListObservable<any>;
+    public showLang:boolean = false;
 
 
-    constructor(private router:Router, params:RouteParams, private fb:FormBuilder) {
+
+    constructor(private _router:Router, params:RouteParams, private _af: AngularFire) {
+
         this.query = params.get('lang');
-        this.language = window.localStorage.getItem('language');
+        this.language = JSON.parse(window.localStorage.getItem('language'));
     }
 
 
@@ -39,6 +42,18 @@ export class AppHeader {
         window.location.href = url + "?lang=" + q;
     }
 
+    selectedLanguage(item){
+        this.language = item;
+        window.localStorage.setItem('language', JSON.stringify(item));
+        this._router.navigate(['/Videos']);
+        window.location.reload();
+    }
+
+
+    showLanguages(val){
+        this.items = this._af.list('/languages');
+        this.showLang = val;
+    }
 
     removeURLParameter(url, parameter) {
         //prefer to use l.search if you have a location/link object

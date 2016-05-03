@@ -4,6 +4,7 @@ const browserSync   = require('browser-sync');
 const del           = require('del');
 const gulp          = require('gulp');
 const gutil         = require('gulp-util');
+const ftp           = require('gulp-ftp');
 const historyApi    = require('connect-history-api-fallback');
 const karma         = require('karma');
 const tslint        = require('gulp-tslint');
@@ -18,7 +19,6 @@ const paths = {
   src: {
     ts: 'src/**/*.ts'
   },
-
   target: 'target'
 };
 
@@ -62,15 +62,6 @@ const config = {
 gulp.task('clean.target', () => del(paths.target));
 
 
-gulp.task('lint', () => {
-  return gulp.src(paths.src.ts)
-    .pipe(tslint())
-    .pipe(tslint.report(
-      config.tslint.report.type,
-      config.tslint.report.options
-    ));
-});
-
 
 gulp.task('serve', done => {
   config.browserSync.server.middleware = [historyApi()];
@@ -78,19 +69,6 @@ gulp.task('serve', done => {
     .init(config.browserSync, done);
 });
 
-
-gulp.task('serve.dev', done => {
-  let conf = require(config.webpack.dev);
-  let compiler = webpack(conf);
-  let server = new WebpackServer(compiler, conf.devServer);
-
-  server.listen(conf.devServer.port, 'localhost', () => {
-    gutil.log(gutil.colors.gray('-------------------------------------------'));
-    gutil.log('WebpackDevServer:', gutil.colors.magenta(`http://localhost:${conf.devServer.port}`));
-    gutil.log(gutil.colors.gray('-------------------------------------------'));
-    done();
-  });
-});
 
 
 gulp.task('ts', done => {
@@ -126,18 +104,22 @@ function karmaServer(options, done) {
     if (error) process.exit(error);
     done();
   });
+
   server.start();
 }
 
 
-gulp.task('test', done => {
-  config.karma.singleRun = true;
-  karmaServer(config.karma, done);
-});
-
-
-gulp.task('test.watch', done => {
-  karmaServer(config.karma, done);
+gulp.task('deploy_ftp', function () {
+  return gulp.src('target/*')
+      .pipe(ftp({
+        host: 'ftp.upjs.com.br',
+        user: 'upjs',
+        pass: 'ra153315'
+      }))
+      // you need to have some kind of stream after gulp-ftp to make sure it's flushed
+      // this can be a gulp plugin, gulp.dest, or any kind of stream
+      // here we use a passthrough stream
+      .pipe(gutil.noop());
 });
 
 

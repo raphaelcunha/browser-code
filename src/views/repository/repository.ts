@@ -20,6 +20,7 @@ export class Repository {
     public accessToken: string = this.ls.github.accessToken;
     public items: Array <any>;
     public lang: any =  null;
+    public subHeader = true;
 
 
     constructor(public http: Http, private auth: AuthService , private params: RouteParams) {

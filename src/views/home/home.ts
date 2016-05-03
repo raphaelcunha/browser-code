@@ -23,6 +23,7 @@ export class Home {
     accessToken: string = this.ls.github.accessToken;
     items:FirebaseListObservable<any>;
     language = null;
+    subHeader = false;
 
     constructor(private auth: AuthService, private _af: AngularFire,  private _router:Router) {
         this.items = this._af.list('/languages');
@@ -32,7 +33,6 @@ export class Home {
     setLanguage(item){
         this.language = item;
         window.localStorage.setItem('language', JSON.stringify(item));
-        console.log(this.language.$key);
         this._router.navigate(['/Videos']);
     }
 

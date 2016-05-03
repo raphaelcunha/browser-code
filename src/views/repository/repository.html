@@ -1,4 +1,4 @@
-<app-header [authenticated]="auth.authenticated" (signOut)="signOut()"></app-header>
+<app-header [authenticated]="auth.authenticated" [subHeader]="subHeader" (signOut)="signOut()"></app-header>
 
 <div class="repository" *ngIf="!readme">
     <div class="col-md-12">

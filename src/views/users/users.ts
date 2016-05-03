@@ -20,6 +20,8 @@ export class Users {
     public items:string[] = [];
     public q:string = '';
     public lang:string = '';
+    public subHeader = true;
+
 
 
     constructor(public http: Http, private auth: AuthService , private params: RouteParams) {

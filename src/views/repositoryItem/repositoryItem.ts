@@ -43,6 +43,8 @@ export class RepositoryItem {
     public repo:string = null;
     public package:string = null;
     public header:boolean = false;
+    public subHeader = true;
+
 
 
 

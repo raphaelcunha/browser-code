@@ -1,22 +1,17 @@
-<app-header [authenticated]="auth.authenticated" (signOut)="signOut()"></app-header>
-
+<app-header [authenticated]="auth.authenticated" [subHeader]="subHeader" (signOut)="signOut()"></app-header>
 
 <div class="videos">
-    <div class="col-md-12">
-        <div class="col-md-3" *ngFor="#item of videos">
-            <div class="card" (click)="selectVideo(item.snippet.channelId)">
-                <img class="card-img-top  text-md-center" src="{{item.snippet.thumbnails.default.url}} " width="30%"
-                     alt="{{item.snippet.title  }}">
-                <h6 class="card-title">{{item.snippet.title }} </h6>
-                <hr/>
-                <p class="card-text">{{item.snippet.description }} </p>
+
+        <div class="col-md-12">
+            <div class="col- col-sm-4 col-md-4 col-lg-4  col-xl-3" *ngFor="#item of videos">
+                <div class="card" (click)="selectVideo(item.snippet.channelId)">
+                    <h6 class="card-title">{{item.snippet.title }} </h6>
+                    <p class="card-text">
+                        <img class="card-img-top text-md-center" src="{{item.snippet.thumbnails.default.url}}"
+                             alt="{{item.snippet.title  }}">
+                        {{item.snippet.description }}
+                    </p>
+                </div>
             </div>
         </div>
-
-
-        <div class="text-md-center">
-            <button class="btn btn-link">Loading More...</button>
-        </div>
-
-    </div>
 </div>

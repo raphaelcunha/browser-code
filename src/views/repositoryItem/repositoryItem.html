@@ -1,9 +1,8 @@
-<app-header [authenticated]="auth.authenticated"  (signOut)="signOut()"></app-header>
+<app-header [authenticated]="auth.authenticated" [subHeader]="subHeader" (signOut)="signOut()"></app-header>
 
 
-<div class="repository repo-description container-fluid col-md-12">
-    <div class="row ">
-
+<div class="repository repo-description container-fluid ">
+    <div class="col-md-12">
 
         <div class="repo-about col-md-12 col-xl-12" *ngIf="repository">
             <img class="img-circle" src="{{repository.owner.avatar_url}}"/>
