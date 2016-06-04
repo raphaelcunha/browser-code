@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewCh
 import { Router, RouterLink, RouteParams, RouterOutlet } from 'angular2/router';
 import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import {FORM_DIRECTIVES, CORE_DIRECTIVES, FormBuilder, Control, ControlGroup} from 'angular2/common';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseRef } from 'angularfire2';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,8 +30,7 @@ export class AppHeader {
 
 
 
-    constructor(private _router:Router, params:RouteParams, private _af: AngularFire) {
-
+    constructor(private _router:Router, params:RouteParams, private _af: AngularFire, ref:Firebase) {
         this.query = params.get('lang');
         this.language = JSON.parse(window.localStorage.getItem('language'));
     }
@@ -51,6 +50,9 @@ export class AppHeader {
 
 
     showLanguages(val){
+
+        console.log();
+
         this.items = this._af.list('/languages');
         this.showLang = val;
     }
