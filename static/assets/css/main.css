@@ -1,0 +1,57 @@
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+  vertical-align:baseline;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a , a:hover {
+  text-decoration: none;
+  color:  #706f6f;
+}
+
+
+*:focus {
+  outline: none;
+}
+
+body{
+  background: white;
+  font-family: 'Roboto','Noto',sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #b6b1dd; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #454355; /* Gecko Browsers */
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.mt15{
+  margin-top:15px;
+}
+
+.mt30{
+  margin-top:30px;
+}
+
+.mt40{
+  margin-top:40px;
+}
+
+.mt60{
+  margin-top:60px;
+}
+
