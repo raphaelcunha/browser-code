@@ -48,11 +48,11 @@
   <div class="repository col-md-12 row">
     <loading v-if="!respositories.length"></loading>
 
-    <div v-if="respositories.length" class="mt30">
+    <div v-if="respositories.length" class="mt10">
 
       <div class="clearfix"></div>
 
-      <div class="col-md-2 col-xl-1" v-for="item in respositories">
+      <div class="col-xs-6 col-md-2 col-xl-1" v-for="item in respositories">
         <router-link :to="{ path: `projects/${item.owner.login}`, query: { repo: item.name }}">
           <div class="card">
             <div class="card-text">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content">
-      <!--<img src="static/assets/images/logo.png" width="300"/>-->
+       <h1>Learn javascript</h1>
       <login></login>
       <img  class="print" src="static/assets/images/print.jpg" width="100%" />
     </div>

@@ -62,7 +62,7 @@
 
     <loading v-if="!users.length"></loading>
 
-    <div  v-if="users.length" class="col-md-12 mt30">
+    <div  v-if="users.length" class="col-md-12 mt10">
 
       <div class="col-md-3 col-lg-3 col-xl-1" v-for="item of users">
 

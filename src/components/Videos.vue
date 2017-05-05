@@ -14,7 +14,7 @@
       components: { Loading },
         data(){
             return{
-                key:'AIzaSyA_AliVKxvNDgi13nClTygYedgab8phBLA',
+                key:'AIzaSyD0iMja2uLfakYuc4waKMo6rx47jObPSVU',
                 videos: [],
                 videoSelected: null,
                 playlist: null,
@@ -69,7 +69,8 @@
   <div class="repository col-md-12 row">
     <loading v-if="!videoSelected"></loading>
 
-    <div v-if="videoSelected" class="mt40">
+    <div v-if="videoSelected" class="mt30">
+
 
       <div class="clearfix"></div>
       <div class="col-md-3 col-xl-1">
@@ -107,19 +108,13 @@
 
         <!--//VIDEOS LIST-->
         <div class="col-md-4" v-for="item in playlist" @click="videoSelected = item;">
-          <div class="card">
+          <div class="card-video">
             <div class="card-text">
               <img class="card-img-top  text-md-center" :src="item.snippet.thumbnails.default.url" width="30%">
               <h2 class="card-title">{{item.snippet.title}} </h2>
               {{item.snippet.description}}
             </div>
             <div class="clearfix"></div>
-            <hr/>
-            <div class="card-repository">
-              <ul>
-                <li><strong>Channel:</strong> {{item.snippet.channelTitle}}</li>
-              </ul>
-            </div>
           </div>
         </div>
 
@@ -218,6 +213,7 @@ hr {
     font-size: 11px;
 }
 
+
 .card-repository ul {
     margin:0;
     padding:0;
@@ -242,7 +238,15 @@ hr {
 }
 
 
-
+.card-video {
+  cursor: pointer;
+  background: #fdfdfd;
+  position:relative;
+  height: 180px;
+  margin-bottom: 30px;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #f1f1f1;
+}
 
 
 
