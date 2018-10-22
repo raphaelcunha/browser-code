@@ -12,32 +12,27 @@
         },
 
         mounted(){
-            let vm = this;
-            vm.user = vm.$route.params.user;
-            if (vm.user != null) {
-              vm.getProfile(vm.user);
-              vm.getRepositorys(vm.user);
-              vm.getEvents(vm.user);
+            const user = this.$route.params.user;
+            if (user != null) {
+              this.getProfile(user);
+              this.getRepositorys(user);
+              this.getEvents(user);
             }
         },
         methods: {
               getProfile(user) {
-                 let vm = this;
-                 vm.$http.get(`users/${user}`).then((response) => {
+                 this.$http.get(`users/${user}`).then((response) => {
                        this.profile = response.data;
                   });
               },
-
               getRepositorys(user) {
-                  let vm = this;
-                  vm.$http.get(`users/${user}/repos?sort=created&order=desc`).then((response) => {
+                  this.$http.get(`users/${user}/repos?sort=created&order=desc`).then((response) => {
                        this.repos = response.data;
                   });
               },
 
               getEvents(user) {
-                let vm = this;
-                vm.$http.get(`users/${user}/events`).then((response) => {
+                this.$http.get(`users/${user}/events`).then((response) => {
                   this.events = response.data;
                  });
               }

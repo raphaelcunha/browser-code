@@ -1,13 +1,19 @@
 <script>
   import {mapState, mapActions} from 'vuex'
+  import SubMenu from './SubMenu.vue'
   import LocalStorage from '../localstorage';
   import Modal from './modal.vue';
   import Search from './search.vue';
-  import configLanguages from '../languages';
+  import {db} from '../firebase';
 
   export default{
     name: 'HeaderApp',
-    components: {Modal, Search},
+    components: {Modal, Search, SubMenu},
+    firebase: {
+      languages: {
+        source: db.ref('languages'),
+      }
+    },
     computed: {
       ...mapState({
         language: state => {
@@ -17,7 +23,6 @@
     },
     data(){
       return {
-        languages: configLanguages,
         user: {},
         menuShow: true,
         languageOpen: true,
@@ -31,6 +36,7 @@
         this.menuShow = true;
       }
       this.user = LocalStorage.getUser();
+      this.languageSelected(this.languages[0]);
     },
 
     methods: {
@@ -45,8 +51,6 @@
       selectLanguage(language){
         this.language = language;
         this.languageOpen = true;
-
-        console.log(this.$route);
 
         if (this.$route.name == 'Developer') {
           this.$router.push('/developers');
@@ -87,8 +91,8 @@
       </div>
 
       <div class="icon-user">
+        <img  :src='user.photoURL' height="25" width="25"/>
         <p>{{user.displayName}}</p>
-        <img  :src='user.photoURL' width="65"/>
       </div>
 
 
@@ -96,7 +100,7 @@
     <div class="clearfix"></div>
     <div class="languages" v-if="languageOpen">
       <ul>
-        <li v-for="lang in languages" :class="{active: language.name == lang.name }" @click="selectLanguage(lang)">
+        <li v-for="lang in languages"  :key=lang.name :class="{active: language.name == lang.name }" @click="selectLanguage(lang)">
           <img :src="'/static/assets/images/logos/'+ lang.img"/>
           <p>{{lang.name}}</p>
         </li>
@@ -104,41 +108,7 @@
       </ul>
     </div>
 
-    <div class="menu">
-      <ul>
-        <!-- <li>
-           <a @click="openLanguages()" :class="{'active': languageOpen }">
-             languages
-           </a>
-         </li>-->
-        <!--<li>
-          <router-link :to="{ path: '/about' }" :class="{'active': this.$route.path == '/about'}" >
-            about
-          </router-link>
-        </li>-->
-        <li>
-          <router-link :to="{ path: '/projects' }" :class="{'active': this.$route.path == '/projects'}">
-            <i class="octicon octicon-repo" style="padding-top: 5px;"></i>
-            <span>projects</span>
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ path: '/developers' }" :class="{'active': this.$route.path == '/developers'}">
-            <i class="octicon octicon-person" style="padding-top: 3px;"></i>
-            <span>developers</span>
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ path: '/videos' }" :class="{'active': this.$route.path == '/videos'}">
-            <i class="octicon octicon-device-camera-video" style="padding-top: 4px; margin-right: 2px; "></i>
-            <span>videos</span>
-          </router-link>
-        </li>
-        <div class="clearfix"></div>
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-
+    <sub-menu></sub-menu>
 
   </div>
 </template>
@@ -180,7 +150,6 @@
   .sidebar {
     width: 100%;
     float: left;
-    height: 55px;
     background: #f9f8f8;
     border-bottom: 1px solid #d7d4d4;
     display: block;
@@ -258,27 +227,28 @@
     float: right;
     padding-top: 10px;
     margin-right: 10px;
-    width: 185px;
+    width: 150px;
+    border-right: 1px solid #cccccc;
   }
 
   .icon-user p {
-    text-align: right;
+    text-align: left;
+    margin-left: 10px;
     padding-top: 8px;
     font-size: 13px;
     color: #706f6f;
     padding-right: 5px;
-    width: 150px;
     float: left;
   }
 
   .icon-user img {
-    float: right;
-    width: 35px;
+    margin-top: 5px;
+    float: left;
   }
 
   .icon-logout {
     float: right;
-    padding-top: 18px;
+    padding-top: 15px;
     width: 30px;
     cursor: pointer;
   }
@@ -287,6 +257,7 @@
     display: block;
     font-size: 15px;
     padding-left: 15px;
+    width: 42px;
   }
 
 

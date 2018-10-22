@@ -24,8 +24,6 @@ body::-webkit-scrollbar-thumb
 	background-color: #cecece;
 }
 
-
-
 </style>
 
 

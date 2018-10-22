@@ -1,5 +1,5 @@
 export default {
-  LANGUAGE_SELECTED(state, payload ) {
+  LANGUAGE_SELECTED(state, payload) {
     state.languageSelected = payload;
   },
-}
+};

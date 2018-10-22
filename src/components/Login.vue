@@ -8,17 +8,7 @@
 
 <script>
   import LocalStorage from '../localstorage';
-  import Firebase from 'firebase';
-  const config = {
-    apiKey: "AIzaSyD0iMja2uLfakYuc4waKMo6rx47jObPSVU",
-    authDomain: "code-c7eae.firebaseapp.com",
-    databaseURL: "https://code-c7eae.firebaseio.com",
-    projectId: "code-c7eae",
-    storageBucket: "code-c7eae.appspot.com",
-    messagingSenderId: "284055458998"
-  };
-  Firebase.initializeApp(config);
-
+  import {firebase} from '../firebase';
 
   export default {
     name: 'Login',
@@ -29,7 +19,7 @@
     },
     mounted(){
       const vm = this;
-      Firebase.auth().onAuthStateChanged(function (user) {
+      firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           vm.logged = true;
           vm.$router.push({ path: '/projects' });
@@ -39,10 +29,10 @@
     methods: {
       login() {
         const vm = this;
-        if (!Firebase.auth().currentUser) {
-          const provider = new Firebase.auth.GithubAuthProvider();
+        if (!firebase.auth().currentUser) {
+          const provider = new firebase.auth.GithubAuthProvider();
           provider.addScope('user');
-          Firebase.auth().signInWithPopup(provider).then(function (result) {
+          firebase.auth().signInWithPopup(provider).then(function (result) {
             let token = result.credential.accessToken;
             let user = result.user.providerData[0];
             LocalStorage.setToken(token);

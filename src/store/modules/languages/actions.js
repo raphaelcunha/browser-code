@@ -1,6 +1,5 @@
-export default  {
-  languageSelected(store, payload){
-    console.log(payload, store);
-      store.commit('LANGUAGE_SELECTED', payload);
-  }
-}
+export default {
+  languageSelected(store, payload) {
+    store.commit('LANGUAGE_SELECTED', payload);
+  },
+};

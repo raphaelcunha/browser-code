@@ -51,22 +51,5 @@
     export default{
         name: 'Home',
         components: { Login },
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        mounted(){
-
-
-
-        }
-
     }
-
-
-
-
-
-
 </script>
