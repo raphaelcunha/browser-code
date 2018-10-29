@@ -19,8 +19,8 @@ export default {
       <input id="search" autofocus v-model="language" name="search" type="text" placeholder="Search language"/>
       <i class="octicon octicon-search" @click="search()"></i>
     </form>
-    <div class="clearfix">
-
+    <div class="clearfix"> </div>
+  </div>
 </template>
 <style scoped>
 h3 {

@@ -2,8 +2,8 @@
   import {mapState, mapActions} from 'vuex'
   import SubMenu from './SubMenu.vue'
   import LocalStorage from '../localstorage';
-  import Modal from './modal.vue';
-  import Search from './search.vue';
+  import Modal from './Modal.vue';
+  import Search from './Search.vue';
   import {db} from '../firebase';
 
   export default{
@@ -17,6 +17,7 @@
     computed: {
       ...mapState({
         language: state => {
+          console.log(state.languages.languageSelected)
           return state.languages.languageSelected;
         }
       })
@@ -36,6 +37,7 @@
         this.menuShow = true;
       }
       this.user = LocalStorage.getUser();
+      console.log(this.languages[0]);
       this.languageSelected(this.languages[0]);
     },
 
@@ -77,6 +79,8 @@
 </script>
 
 <template>
+
+
   <div v-if="user">
     <div class="sidebar">
       <div class="logo">
@@ -112,6 +116,8 @@
 
   </div>
 </template>
+
+
 <style scoped>
   .languages {
     height: 120px;

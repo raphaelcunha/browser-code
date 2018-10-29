@@ -35,6 +35,4 @@ body::-webkit-scrollbar-thumb
     name: 'App',
     components: { HeaderApp },
   }
-
-
 </script>
